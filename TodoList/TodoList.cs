@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Sql;
+using System.Data.SqlClient;
 
 namespace TodoList
 {
@@ -107,6 +109,11 @@ namespace TodoList
         private void button3_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Item excluido com sucesso!");
+        }
+
+        private void TodoList_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
