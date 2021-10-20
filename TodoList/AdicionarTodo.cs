@@ -37,7 +37,7 @@ namespace TodoList
                 SqlConnection sqlConnection = new SqlConnection();
                 SqlCommand sqlCommand = new SqlCommand();
 
-                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=testes; INTEGRATED SECURITY=TRUE";
+                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
                 sqlConnection.Open();
 
                 //insert 

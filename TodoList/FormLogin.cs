@@ -57,9 +57,51 @@ namespace TodoList
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TodoList formTodoList = new TodoList();
-            formTodoList.Show();
-            this.Hide();
+            string user_email = textBoxUserLogin.Text;
+            string user_password = textBoxUserPassword.Text;
+
+            if (user_email.Length == 0 && user_password.Length == 0)
+            {
+                MessageBox.Show("por favor digite suas credenciais");
+                return;
+            }
+
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+
+            SqlDataReader sqlDataReader;
+
+            //String de conexão
+            SqlConnection sqlConnection = new SqlConnection();
+            SqlCommand sqlCommand = new SqlCommand();
+
+            sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
+            sqlConnection.Open();
+            //Comando
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.CommandType = CommandType.Text;
+
+
+            sqlCommand.CommandText = "select id, password from users where email='" + user_email + "';";
+            sqlDataAdapter.SelectCommand = sqlCommand;
+
+            // testando pegar valor pela variavel
+            sqlDataReader = sqlCommand.ExecuteReader();
+            sqlDataReader.Read();
+            string db_user_id = sqlDataReader["id"].ToString();
+            string db_user_password = sqlDataReader["password"].ToString();
+
+            if (db_user_id == null || user_password != db_user_password)
+            {
+                MessageBox.Show("email ou senha inválida");
+                return;
+            }
+
+            if (db_user_password == user_password)
+            {
+                TodoList formTodoList = new TodoList();
+                formTodoList.Show();
+                this.Hide();
+            }
         }
 
         private void buttonLeave_Click(object sender, EventArgs e)

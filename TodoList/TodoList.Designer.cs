@@ -51,7 +51,10 @@ namespace TodoList
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -152,7 +155,7 @@ namespace TodoList
             // buttonTodoEdit
             // 
             this.buttonTodoEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTodoEdit.Location = new System.Drawing.Point(464, 152);
+            this.buttonTodoEdit.Location = new System.Drawing.Point(624, 152);
             this.buttonTodoEdit.Name = "buttonTodoEdit";
             this.buttonTodoEdit.Size = new System.Drawing.Size(63, 28);
             this.buttonTodoEdit.TabIndex = 4;
@@ -163,7 +166,7 @@ namespace TodoList
             // buttonTodoDelete
             // 
             this.buttonTodoDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTodoDelete.Location = new System.Drawing.Point(533, 152);
+            this.buttonTodoDelete.Location = new System.Drawing.Point(693, 152);
             this.buttonTodoDelete.Name = "buttonTodoDelete";
             this.buttonTodoDelete.Size = new System.Drawing.Size(63, 28);
             this.buttonTodoDelete.TabIndex = 5;
@@ -198,7 +201,7 @@ namespace TodoList
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(533, 209);
+            this.button1.Location = new System.Drawing.Point(693, 209);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(63, 28);
             this.button1.TabIndex = 9;
@@ -209,7 +212,7 @@ namespace TodoList
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(464, 209);
+            this.button2.Location = new System.Drawing.Point(624, 209);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(63, 28);
             this.button2.TabIndex = 8;
@@ -241,7 +244,7 @@ namespace TodoList
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(533, 270);
+            this.button3.Location = new System.Drawing.Point(693, 270);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(63, 28);
             this.button3.TabIndex = 13;
@@ -252,7 +255,7 @@ namespace TodoList
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(464, 270);
+            this.button4.Location = new System.Drawing.Point(624, 270);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(63, 28);
             this.button4.TabIndex = 12;
@@ -269,11 +272,34 @@ namespace TodoList
             this.label4.Size = new System.Drawing.Size(0, 24);
             this.label4.TabIndex = 11;
             // 
+            // dataGridViewUsers
+            // 
+            this.dataGridViewUsers.AllowUserToAddRows = false;
+            this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUsers.Location = new System.Drawing.Point(48, 87);
+            this.dataGridViewUsers.Name = "dataGridViewUsers";
+            this.dataGridViewUsers.Size = new System.Drawing.Size(570, 280);
+            this.dataGridViewUsers.TabIndex = 15;
+            this.dataGridViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridViewUsers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellContentDoubleClick);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(681, 304);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // TodoList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 379);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.dataGridViewUsers);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
@@ -297,6 +323,7 @@ namespace TodoList
             this.Load += new System.EventHandler(this.TodoList_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,6 +353,8 @@ namespace TodoList
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridViewUsers;
+        private System.Windows.Forms.Button button5;
     }
 }
 

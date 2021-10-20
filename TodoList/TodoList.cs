@@ -113,7 +113,62 @@ namespace TodoList
 
         private void TodoList_Load(object sender, EventArgs e)
         {
+            try
+            {
 
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                DataSet dataSet = new DataSet();
+
+                SqlDataReader sqlDataReader;
+
+                //String de conexão
+                SqlConnection sqlConnection = new SqlConnection();
+                SqlCommand sqlCommand = new SqlCommand();
+
+                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
+                sqlConnection.Open();
+
+                //Comando
+                sqlCommand.Connection = sqlConnection;
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandText = "select * from to_do;";
+
+                sqlDataAdapter.SelectCommand = sqlCommand;
+
+                sqlDataAdapter.Fill(dataSet);
+                dataGridViewUsers.DataSource = dataSet.Tables[0];
+
+                // testando pegar valor pela variavel
+                //sqlDataReader = sqlCommand.ExecuteReader();
+                //string data = sqlDataReader["id"].ToString();
+                //sqlDataReader.Read();
+
+                //string data = sqlDataReader["id"].ToString();
+                //MessageBox.Show("data:" + data);
+
+            }
+            catch (SqlException error)
+            {
+                MessageBox.Show("Error:" + error);
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewUsers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AdicionarTodo adicionar_todo = new AdicionarTodo();
+            adicionar_todo.ShowDialog();
+
+            // if(sqlDataReader.R)
         }
     }
 }
