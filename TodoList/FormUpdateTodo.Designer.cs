@@ -30,12 +30,12 @@ namespace TodoList
         private void InitializeComponent()
         {
             this.ButtonCancelar = new System.Windows.Forms.Button();
-            this.ButtonSaveNewTodo = new System.Windows.Forms.Button();
-            this.textBoxAddDescriptionTodo = new System.Windows.Forms.TextBox();
+            this.ButtonSaveUpdatedTodo = new System.Windows.Forms.Button();
+            this.textBoxUpdateDescriptionTodo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxAddNameTodo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxUpdateNameTodo = new System.Windows.Forms.TextBox();
+            this.labelUpdateTodoName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ButtonCancelar
@@ -48,22 +48,22 @@ namespace TodoList
             this.ButtonCancelar.UseVisualStyleBackColor = true;
             this.ButtonCancelar.Click += new System.EventHandler(this.ButtonCancelar_Click);
             // 
-            // ButtonSaveNewTodo
+            // ButtonSaveUpdatedTodo
             // 
-            this.ButtonSaveNewTodo.Location = new System.Drawing.Point(245, 198);
-            this.ButtonSaveNewTodo.Name = "ButtonSaveNewTodo";
-            this.ButtonSaveNewTodo.Size = new System.Drawing.Size(75, 23);
-            this.ButtonSaveNewTodo.TabIndex = 10;
-            this.ButtonSaveNewTodo.Text = "ATUALIZAR";
-            this.ButtonSaveNewTodo.UseVisualStyleBackColor = true;
-            this.ButtonSaveNewTodo.Click += new System.EventHandler(this.ButtonSaveNewTodo_Click);
+            this.ButtonSaveUpdatedTodo.Location = new System.Drawing.Point(245, 198);
+            this.ButtonSaveUpdatedTodo.Name = "ButtonSaveUpdatedTodo";
+            this.ButtonSaveUpdatedTodo.Size = new System.Drawing.Size(75, 23);
+            this.ButtonSaveUpdatedTodo.TabIndex = 10;
+            this.ButtonSaveUpdatedTodo.Text = "ATUALIZAR";
+            this.ButtonSaveUpdatedTodo.UseVisualStyleBackColor = true;
+            this.ButtonSaveUpdatedTodo.Click += new System.EventHandler(this.ButtonSaveNewTodo_Click);
             // 
-            // textBoxAddDescriptionTodo
+            // textBoxUpdateDescriptionTodo
             // 
-            this.textBoxAddDescriptionTodo.Location = new System.Drawing.Point(156, 160);
-            this.textBoxAddDescriptionTodo.Name = "textBoxAddDescriptionTodo";
-            this.textBoxAddDescriptionTodo.Size = new System.Drawing.Size(164, 20);
-            this.textBoxAddDescriptionTodo.TabIndex = 9;
+            this.textBoxUpdateDescriptionTodo.Location = new System.Drawing.Point(156, 160);
+            this.textBoxUpdateDescriptionTodo.Name = "textBoxUpdateDescriptionTodo";
+            this.textBoxUpdateDescriptionTodo.Size = new System.Drawing.Size(164, 20);
+            this.textBoxUpdateDescriptionTodo.TabIndex = 9;
             // 
             // label2
             // 
@@ -83,36 +83,36 @@ namespace TodoList
             this.label1.TabIndex = 7;
             this.label1.Text = "nome da tarefa:";
             // 
-            // textBoxAddNameTodo
+            // textBoxUpdateNameTodo
             // 
-            this.textBoxAddNameTodo.Location = new System.Drawing.Point(156, 125);
-            this.textBoxAddNameTodo.Name = "textBoxAddNameTodo";
-            this.textBoxAddNameTodo.Size = new System.Drawing.Size(164, 20);
-            this.textBoxAddNameTodo.TabIndex = 6;
+            this.textBoxUpdateNameTodo.Location = new System.Drawing.Point(156, 125);
+            this.textBoxUpdateNameTodo.Name = "textBoxUpdateNameTodo";
+            this.textBoxUpdateNameTodo.Size = new System.Drawing.Size(164, 20);
+            this.textBoxUpdateNameTodo.TabIndex = 6;
             // 
-            // label3
+            // labelUpdateTodoName
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(75, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(245, 24);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Atualizando todo Examplo 1";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.labelUpdateTodoName.AutoSize = true;
+            this.labelUpdateTodoName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUpdateTodoName.Location = new System.Drawing.Point(75, 33);
+            this.labelUpdateTodoName.Name = "labelUpdateTodoName";
+            this.labelUpdateTodoName.Size = new System.Drawing.Size(245, 24);
+            this.labelUpdateTodoName.TabIndex = 12;
+            this.labelUpdateTodoName.Text = "Atualizando todo Examplo 1";
+            this.labelUpdateTodoName.Click += new System.EventHandler(this.label3_Click);
             // 
             // FormUpdateTodo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 279);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelUpdateTodoName);
             this.Controls.Add(this.ButtonCancelar);
-            this.Controls.Add(this.ButtonSaveNewTodo);
-            this.Controls.Add(this.textBoxAddDescriptionTodo);
+            this.Controls.Add(this.ButtonSaveUpdatedTodo);
+            this.Controls.Add(this.textBoxUpdateDescriptionTodo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxAddNameTodo);
+            this.Controls.Add(this.textBoxUpdateNameTodo);
             this.Name = "FormUpdateTodo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Atualizar tarefa";
@@ -125,11 +125,11 @@ namespace TodoList
         #endregion
 
         private System.Windows.Forms.Button ButtonCancelar;
-        private System.Windows.Forms.Button ButtonSaveNewTodo;
-        private System.Windows.Forms.TextBox textBoxAddDescriptionTodo;
+        private System.Windows.Forms.Button ButtonSaveUpdatedTodo;
+        private System.Windows.Forms.TextBox textBoxUpdateDescriptionTodo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxAddNameTodo;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxUpdateNameTodo;
+        private System.Windows.Forms.Label labelUpdateTodoName;
     }
 }

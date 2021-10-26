@@ -16,5 +16,10 @@ namespace TodoList
         {
             InitializeComponent();
         }
+
+        private void FormDocumentation_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

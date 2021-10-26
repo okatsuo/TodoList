@@ -14,6 +14,10 @@ namespace TodoList
 {
     public partial class TodoList : Form
     {
+
+        SqlDataReader sqlDataReader;
+        DataSet dataSet = new DataSet();
+
         public TodoList()
         {
             InitializeComponent();
@@ -98,7 +102,9 @@ namespace TodoList
 
         private void buttonTodoDelete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Item excluido com sucesso!");
+            // unico botão de excluir existente agora
+            FormDeleteTodo formDeleteTodo = new FormDeleteTodo();
+            formDeleteTodo.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -117,9 +123,6 @@ namespace TodoList
             {
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-                DataSet dataSet = new DataSet();
-
-                SqlDataReader sqlDataReader;
 
                 //String de conexão
                 SqlConnection sqlConnection = new SqlConnection();
@@ -131,20 +134,14 @@ namespace TodoList
                 //Comando
                 sqlCommand.Connection = sqlConnection;
                 sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.CommandText = "select * from to_do;";
+                sqlCommand.CommandText = "select * from to_do;"; // TODO mudar depois para trazer só os dados que precisa
 
                 sqlDataAdapter.SelectCommand = sqlCommand;
 
                 sqlDataAdapter.Fill(dataSet);
                 dataGridViewUsers.DataSource = dataSet.Tables[0];
 
-                // testando pegar valor pela variavel
-                //sqlDataReader = sqlCommand.ExecuteReader();
-                //string data = sqlDataReader["id"].ToString();
-                //sqlDataReader.Read();
-
-                //string data = sqlDataReader["id"].ToString();
-                //MessageBox.Show("data:" + data);
+                sqlConnection.Close();
 
             }
             catch (SqlException error)
@@ -160,15 +157,82 @@ namespace TodoList
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridViewUsers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            AdicionarTodo adicionar_todo = new AdicionarTodo();
-            adicionar_todo.ShowDialog();
 
-            // if(sqlDataReader.R)
+            int linha = Convert.ToInt32(dataGridViewUsers.CurrentRow.Index);
+            int idCliente = Convert.ToInt32(dataGridViewUsers.Rows[linha].Cells[0].Value.ToString());
+
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection();
+                SqlCommand sqlCommand = new SqlCommand();
+
+                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
+                sqlConnection.Open();
+
+                sqlCommand.Connection = sqlConnection;
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandText = "select * from to_do where id = " + idCliente + ";";
+
+                sqlDataReader = sqlCommand.ExecuteReader();
+
+                if (sqlDataReader.Read())
+                {
+                    FormUpdateTodo FormTodoUpdate = new FormUpdateTodo();
+
+                    FormTodoUpdate.propriedadeIdTodo = sqlDataReader["id"].ToString();
+                    FormTodoUpdate.propriedadeNameTodo = sqlDataReader["name"].ToString();
+                    FormTodoUpdate.propriedadeDescricaoTodo = sqlDataReader["description"].ToString();
+
+                    FormTodoUpdate.ShowDialog();
+                }
+
+                sqlConnection.Close();
+            }
+            catch (SqlException sqlError)
+            {
+                MessageBox.Show("Error:" + sqlError);
+            }
+
+
+
+        }
+
+        private void buttonRefreshTodo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+
+                //String de conexão
+                SqlConnection sqlConnection = new SqlConnection();
+                SqlCommand sqlCommand = new SqlCommand();
+
+                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
+                sqlConnection.Open();
+
+                //Comando
+                sqlCommand.Connection = sqlConnection;
+                sqlCommand.CommandType = CommandType.Text;  
+                sqlCommand.CommandText = "select * from to_do;"; // TODO mudar depois para trazer só os dados que precisa e apenas do usuario logado
+
+                sqlDataAdapter.SelectCommand = sqlCommand;
+                dataSet.Clear();
+                sqlDataAdapter.Fill(dataSet);
+                dataGridViewUsers.DataSource = dataSet.Tables[0];
+
+                sqlConnection.Close();
+
+            }
+            catch (SqlException error)
+            {
+                MessageBox.Show("Error:" + error);
+            }
         }
     }
 }

@@ -50,6 +50,7 @@ namespace TodoList
             this.Name = "FormDocumentation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Documentação";
+            this.Load += new System.EventHandler(this.FormDocumentation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

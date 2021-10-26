@@ -141,6 +141,12 @@
     <Compile Include="AdicionarTodo.Designer.cs">
       <DependentUpon>AdicionarTodo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDeleteTodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDeleteTodo.Designer.cs">
+      <DependentUpon>FormDeleteTodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSystemInformation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdicionarTodo.resx">
       <DependentUpon>AdicionarTodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDeleteTodo.resx">
+      <DependentUpon>FormDeleteTodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDocumentation.resx">
       <DependentUpon>FormDocumentation.cs</DependentUpon>

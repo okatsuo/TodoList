@@ -40,19 +40,14 @@ namespace TodoList
             this.documentaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonTodoEdit = new System.Windows.Forms.Button();
             this.buttonTodoDelete = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonRefreshTodo = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.SuspendLayout();
@@ -152,23 +147,12 @@ namespace TodoList
             this.label2.Size = new System.Drawing.Size(0, 24);
             this.label2.TabIndex = 3;
             // 
-            // buttonTodoEdit
-            // 
-            this.buttonTodoEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTodoEdit.Location = new System.Drawing.Point(624, 152);
-            this.buttonTodoEdit.Name = "buttonTodoEdit";
-            this.buttonTodoEdit.Size = new System.Drawing.Size(63, 28);
-            this.buttonTodoEdit.TabIndex = 4;
-            this.buttonTodoEdit.Text = "editar";
-            this.buttonTodoEdit.UseVisualStyleBackColor = true;
-            this.buttonTodoEdit.Click += new System.EventHandler(this.buttonTodoEdit_Click);
-            // 
             // buttonTodoDelete
             // 
             this.buttonTodoDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTodoDelete.Location = new System.Drawing.Point(693, 152);
+            this.buttonTodoDelete.Location = new System.Drawing.Point(662, 152);
             this.buttonTodoDelete.Name = "buttonTodoDelete";
-            this.buttonTodoDelete.Size = new System.Drawing.Size(63, 28);
+            this.buttonTodoDelete.Size = new System.Drawing.Size(83, 28);
             this.buttonTodoDelete.TabIndex = 5;
             this.buttonTodoDelete.Text = "excluir";
             this.buttonTodoDelete.UseVisualStyleBackColor = true;
@@ -198,28 +182,6 @@ namespace TodoList
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(693, 209);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(63, 28);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "excluir";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(624, 209);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(63, 28);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "editar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -241,28 +203,6 @@ namespace TodoList
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(693, 270);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(63, 28);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "excluir";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(624, 270);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(63, 28);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "editar";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -283,34 +223,30 @@ namespace TodoList
             this.dataGridViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridViewUsers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellContentDoubleClick);
             // 
-            // button5
+            // buttonRefreshTodo
             // 
-            this.button5.Location = new System.Drawing.Point(681, 304);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.buttonRefreshTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRefreshTodo.Location = new System.Drawing.Point(662, 209);
+            this.buttonRefreshTodo.Name = "buttonRefreshTodo";
+            this.buttonRefreshTodo.Size = new System.Drawing.Size(83, 28);
+            this.buttonRefreshTodo.TabIndex = 16;
+            this.buttonRefreshTodo.Text = "atualizar";
+            this.buttonRefreshTodo.UseVisualStyleBackColor = true;
+            this.buttonRefreshTodo.Click += new System.EventHandler(this.buttonRefreshTodo_Click);
             // 
             // TodoList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 379);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.buttonRefreshTodo);
             this.Controls.Add(this.dataGridViewUsers);
             this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.buttonTodoDelete);
-            this.Controls.Add(this.buttonTodoEdit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonNewTodo);
             this.Controls.Add(this.label1);
@@ -342,19 +278,14 @@ namespace TodoList
         private System.Windows.Forms.ToolStripMenuItem opçõesDaContaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button buttonTodoEdit;
         private System.Windows.Forms.Button buttonTodoDelete;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridViewUsers;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonRefreshTodo;
     }
 }
 
