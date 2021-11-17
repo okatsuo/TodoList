@@ -30,24 +30,13 @@ namespace TodoList
             {
                 string id_to_delete = textBoxDeleteTodoId.Text;
 
-                SqlConnection sqlConnection = new SqlConnection();
-                SqlCommand sqlCommand = new SqlCommand();
-                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
-                sqlConnection.Open();
-
-                sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandType = CommandType.Text;
-                // update to_do set name = 'Estudar POO', description = 'dale' where id = 3;
-                sqlCommand.CommandText = "delete to_do where id = " + id_to_delete;
-                sqlCommand.ExecuteNonQuery();
-
-                sqlConnection.Close();
-
+                Banco banco = new Banco();
+                banco.execMutation("delete to_do where id = " + id_to_delete);
                 Close();
             }
-            catch (SqlException sqlError)
+            catch (SqlException error)
             {
-                MessageBox.Show("Error:" + sqlError);
+                MessageBox.Show("Error:" + error);
             }
         }
     }

@@ -141,6 +141,7 @@
     <Compile Include="AdicionarTodo.Designer.cs">
       <DependentUpon>AdicionarTodo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Banco.cs" />
     <Compile Include="FormDeleteTodo.cs">
       <SubType>Form</SubType>
     </Compile>

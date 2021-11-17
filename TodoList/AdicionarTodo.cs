@@ -33,23 +33,10 @@ namespace TodoList
                 int isActive = 1;
                 int user_id = 1;
 
-                //String de conexão
-                SqlConnection sqlConnection = new SqlConnection();
-                SqlCommand sqlCommand = new SqlCommand();
-
-                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
-                sqlConnection.Open();
-
-                //insert 
-                sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.CommandText = "insert into to_do(name, description, status, userId) values ('" + todoName + "', '" + todoDescription + "', '" + isActive + "', '" + user_id + "' ); ";
-                sqlCommand.ExecuteNonQuery();
-
-                sqlConnection.Close();
+                Banco banco = new Banco();
+                banco.execMutation("insert into to_do(name, description, status, userId) values ('" + todoName + "', '" + todoDescription + "', '" + isActive + "', '" + user_id + "' ); ");
 
                 MessageBox.Show("tarefa " + todoName.ToUpper() + " cadastrada com sucesso!");
-
                 Close();
             }
             catch (SqlException error)

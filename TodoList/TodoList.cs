@@ -121,28 +121,13 @@ namespace TodoList
         {
             try
             {
-
+                Banco banco = new Banco();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
 
-                //String de conexão
-                SqlConnection sqlConnection = new SqlConnection();
-                SqlCommand sqlCommand = new SqlCommand();
-
-                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
-                sqlConnection.Open();
-
-                //Comando
-                sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.CommandText = "select * from to_do;"; // TODO mudar depois para trazer só os dados que precisa
-
-                sqlDataAdapter.SelectCommand = sqlCommand;
+                sqlDataAdapter.SelectCommand = banco.execQuery("select * from to_do;");
 
                 sqlDataAdapter.Fill(dataSet);
                 dataGridViewUsers.DataSource = dataSet.Tables[0];
-
-                sqlConnection.Close();
-
             }
             catch (SqlException error)
             {
@@ -168,17 +153,9 @@ namespace TodoList
 
             try
             {
-                SqlConnection sqlConnection = new SqlConnection();
-                SqlCommand sqlCommand = new SqlCommand();
+                Banco banco = new Banco();
 
-                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
-                sqlConnection.Open();
-
-                sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.CommandText = "select * from to_do where id = " + idCliente + ";";
-
-                sqlDataReader = sqlCommand.ExecuteReader();
+                sqlDataReader = banco.execConsultReturn("select * from to_do where id = " + idCliente + ";");
 
                 if (sqlDataReader.Read())
                 {
@@ -190,44 +167,25 @@ namespace TodoList
 
                     FormTodoUpdate.ShowDialog();
                 }
-
-                sqlConnection.Close();
             }
-            catch (SqlException sqlError)
+            catch (SqlException error)
             {
-                MessageBox.Show("Error:" + sqlError);
+                MessageBox.Show("Error" + error);
             }
-
-
-
         }
 
         private void buttonRefreshTodo_Click(object sender, EventArgs e)
         {
             try
             {
-
+                Banco banco = new Banco();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
 
-                //String de conexão
-                SqlConnection sqlConnection = new SqlConnection();
-                SqlCommand sqlCommand = new SqlCommand();
+                sqlDataAdapter.SelectCommand = banco.execQuery("select * from to_do;");
 
-                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
-                sqlConnection.Open();
-
-                //Comando
-                sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandType = CommandType.Text;  
-                sqlCommand.CommandText = "select * from to_do;"; // TODO mudar depois para trazer só os dados que precisa e apenas do usuario logado
-
-                sqlDataAdapter.SelectCommand = sqlCommand;
                 dataSet.Clear();
                 sqlDataAdapter.Fill(dataSet);
                 dataGridViewUsers.DataSource = dataSet.Tables[0];
-
-                sqlConnection.Close();
-
             }
             catch (SqlException error)
             {

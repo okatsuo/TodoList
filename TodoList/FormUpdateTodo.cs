@@ -35,18 +35,8 @@ namespace TodoList
                 string todo_name_to_update = textBoxUpdateNameTodo.Text;
                 string todo_description_to_update = textBoxUpdateDescriptionTodo.Text;
 
-                SqlConnection sqlConnection = new SqlConnection();
-                SqlCommand sqlCommand = new SqlCommand();
-                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
-                sqlConnection.Open();
-
-                sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandType = CommandType.Text;
-                // update to_do set name = 'Estudar POO', description = 'dale' where id = 3;
-                sqlCommand.CommandText = "update to_do set name = '" + todo_name_to_update + "', description = '" + todo_description_to_update + "' where id = " + this.propriedadeIdTodo;
-                sqlCommand.ExecuteNonQuery();
-
-                sqlConnection.Close();
+                Banco banco = new Banco();
+                banco.execMutation("update to_do set name = '" + todo_name_to_update + "', description = '" + todo_description_to_update + "' where id = " + this.propriedadeIdTodo);
 
                 MessageBox.Show("Atualizado com sucesso!");
                 Close();
