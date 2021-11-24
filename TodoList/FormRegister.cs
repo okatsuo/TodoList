@@ -33,21 +33,8 @@ namespace TodoList
                 string userPasswordConfirmation = textBoxUserPasswordConfirmation.Text;
                 int isActive = 1; // 1 true, 0 false
 
-                //String de conexão
-                SqlConnection sqlConnection = new SqlConnection();
-                SqlCommand sqlCommand = new SqlCommand();
-
-                sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=testes; INTEGRATED SECURITY=TRUE";
-                sqlConnection.Open();
-
-                //insert 
-                sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.CommandText = "insert into users(email, password, status) values('" + userName + "', '" + userPassword + "', " + isActive + ");";
-                sqlCommand.ExecuteNonQuery();
-
-                sqlConnection.Close();
-
+                Banco banco = new Banco();
+                banco.execMutation($"insert into users(email, password, status) values('{userName}', '{userPassword}', {isActive});");
 
                 MessageBox.Show("você foi cadastrado com sucesso!");
                 if (Application.OpenForms.Count == 0)
@@ -69,7 +56,7 @@ namespace TodoList
             }
             catch (SqlException error)
             {
-                MessageBox.Show("Erro ao registrar.. \n\n Error: " +error.Message);
+                MessageBox.Show("Erro ao registrar.. \n\n Error: " + error.Message);
             }
 
 

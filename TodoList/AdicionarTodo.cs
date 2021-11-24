@@ -31,12 +31,10 @@ namespace TodoList
                 string todoName = textBoxAddNameTodo.Text;
                 string todoDescription = textBoxAddDescriptionTodo.Text;
                 int isActive = 1;
-                int user_id = 1;
 
                 Banco banco = new Banco();
-                banco.execMutation("insert into to_do(name, description, status, userId) values ('" + todoName + "', '" + todoDescription + "', '" + isActive + "', '" + user_id + "' ); ");
-
-                MessageBox.Show("tarefa " + todoName.ToUpper() + " cadastrada com sucesso!");
+                banco.execMutation($"insert into to_do(name, description, status, userId) values ('{todoName}', '{todoDescription}', '{isActive}', '{User.Id}');");
+                MessageBox.Show($"tarefa {todoName.ToUpper()} cadastrada com sucesso!");
                 Close();
             }
             catch (SqlException error)

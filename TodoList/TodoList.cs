@@ -124,7 +124,7 @@ namespace TodoList
                 Banco banco = new Banco();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
 
-                sqlDataAdapter.SelectCommand = banco.execQuery("select * from to_do;");
+                sqlDataAdapter.SelectCommand = banco.execQuery($"select * from to_do where userId = {User.Id};");
 
                 sqlDataAdapter.Fill(dataSet);
                 dataGridViewUsers.DataSource = dataSet.Tables[0];
@@ -154,8 +154,7 @@ namespace TodoList
             try
             {
                 Banco banco = new Banco();
-
-                sqlDataReader = banco.execConsultReturn("select * from to_do where id = " + idCliente + ";");
+                sqlDataReader = banco.execConsultReturn($"select * from to_do where id={idCliente}");
 
                 if (sqlDataReader.Read())
                 {
@@ -181,7 +180,7 @@ namespace TodoList
                 Banco banco = new Banco();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
 
-                sqlDataAdapter.SelectCommand = banco.execQuery("select * from to_do;");
+                sqlDataAdapter.SelectCommand = banco.execQuery($"select * from to_do where userId={User.Id}");
 
                 dataSet.Clear();
                 sqlDataAdapter.Fill(dataSet);

@@ -67,7 +67,6 @@ namespace TodoList
             }
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-
             SqlDataReader sqlDataReader;
 
             //String de conexão
@@ -80,8 +79,7 @@ namespace TodoList
             sqlCommand.Connection = sqlConnection;
             sqlCommand.CommandType = CommandType.Text;
 
-
-            sqlCommand.CommandText = "select id, password from users where email='" + user_email + "';";
+            sqlCommand.CommandText = $"select * from users where email='{user_email}'";
             sqlDataAdapter.SelectCommand = sqlCommand;
 
             // testando pegar valor pela variavel
@@ -89,6 +87,10 @@ namespace TodoList
             sqlDataReader.Read();
             string db_user_id = sqlDataReader["id"].ToString();
             string db_user_password = sqlDataReader["password"].ToString();
+            string db_user_email = sqlDataReader["email"].ToString();
+
+            User.Id = db_user_id;
+            User.Email = db_user_email;
 
             if (db_user_id == null || user_password != db_user_password)
             {
