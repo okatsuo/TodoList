@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
+using System.Data.Sql;
+using System.Data.SqlClient;
 
 namespace TodoList
 {
@@ -69,21 +70,9 @@ namespace TodoList
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             SqlDataReader sqlDataReader;
 
-            //String de conexão
-            SqlConnection sqlConnection = new SqlConnection();
-            SqlCommand sqlCommand = new SqlCommand();
-
-            sqlConnection.ConnectionString = "DATA SOURCE=.\\SQLSERVER; INITIAL CATALOG=todo; INTEGRATED SECURITY=TRUE";
-            sqlConnection.Open();
-            //Comando
-            sqlCommand.Connection = sqlConnection;
-            sqlCommand.CommandType = CommandType.Text;
-
-            sqlCommand.CommandText = $"select * from users where email='{user_email}'";
-            sqlDataAdapter.SelectCommand = sqlCommand;
-
+            Banco banco = new Banco();
             // testando pegar valor pela variavel
-            sqlDataReader = sqlCommand.ExecuteReader();
+            sqlDataReader = banco.execConsultReturn($"select * from users where email='{user_email}'");
             sqlDataReader.Read();
             string db_user_id = sqlDataReader["id"].ToString();
             string db_user_password = sqlDataReader["password"].ToString();
